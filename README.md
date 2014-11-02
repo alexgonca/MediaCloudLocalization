@@ -13,9 +13,20 @@ The code presented here implements the first step. In fact, there are two ways o
 
 # By language
 
-It is implemented in the file [AlexaLanguage.java](AlexaLanguage.java).
+It is implemented in [AlexaLanguage.java](AlexaLanguage.java).
 
 This is the method I used to select the media sources for Brazil. If a language is largely related to one specific country (or if you are interested in a set of media sources grouped by language and not country), this is the way to go.
 
-In fact, there are nine countries that have Portuguese as their official language (Portugal, Brazil, Mozambique, East Timor, etc.), however four out of five Portuguese speakers live in Brazil. So it was pretty safe to assume that most websites would be related to the Brazilian online environment.
+In fact, there are nine countries that have Portuguese as their official language (Portugal, Brazil, Mozambique, East Timor, Angola, Cape Verde, São Tomé and Príncipe, Macau, and Guinea-Bissau). Nonetheless, four out of five Portuguese speakers live in Brazil. So it was pretty safe to assume that most websites would be related to the Brazilian online environment.
 
+The code uses Nakatani Shuyo's excellent [language detection library for Java](https://code.google.com/p/language-detection/). The results are saved in a MySQL database.
+
+# By country
+
+It is implemented in [AlexaCountry.java](AlexaCountry.java).
+
+If a language is spoken in many different countries, the previous method falls short. It is necessary to find the country information elsewhere. The easiest way is to search for that information in Alexa's website (e.g. [Wikipedia's data](http://www.alexa.com/siteinfo/wikipedia.org)).
+
+However, after a few thousand requests, Alexa's website (understandbly) shuts down the requester's IP for several hours. Therefore, it is not practical to use this method for all 1,000,000 websites, but it can be used for only a few thousands that have already been selected by language based on the previous method (although a bit of pacience is required to resume the process a few times).
+
+That was my approach I used to help my friend [Dalia Othman](https://twitter.com/DaliaOthman). She was trying to create a set of media sources for Egypt. With [AlexaLanguage.java](AlexaLanguage.java), I had already identified around 10,000 media sources in Arabic. To find the Egyptians ones, I wrote [AlexaCountry.java](AlexaCountry.java).
