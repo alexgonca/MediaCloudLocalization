@@ -13,7 +13,7 @@ The code presented here implements the first step. In fact, there are two ways o
 
 # By language
 
-It is implemented in the file [AlexaLanguage.java](blob/master/AlexaLanguage.java).
+It is implemented in the file [AlexaLanguage.java](AlexaLanguage.java).
 
 This is the method I used to select the media sources for Brazil. If a language is largely related to one specific country (or if you are interested in a set of media sources grouped by language and not country), this is the way to go.
 
